@@ -7,19 +7,25 @@ import Welcome from "../components/Welcome";
 
 function LoginContainer({ logIn, user }) {
     const [ loading, setLoading ] = useState(false);
+    const [ failed, setFailed ] = useState(false);
+
     const fetchUser = (loginData) => {
         setLoading(true);
         setTimeout(() => {
-            if(loginData.mail === "ciao"){
+            if(loginData.mail === "ciao@ciaone.it"){
                 logIn(loginData);
+                setFailed(false);
+            } else {
+                setFailed(true);
             }
             setLoading(false);
         }, 1000);
     };
+    
     if(loading) return <LoadingTemplate />;
     if(user !== null) return <Welcome/>;
 
-    return <Login onSubmit={fetchUser} />;
+    return <Login onSubmit={fetchUser} failed={failed} />;
 }
 
 const mapStateToProps = state => {
@@ -35,4 +41,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
-// export default LoginContainer;

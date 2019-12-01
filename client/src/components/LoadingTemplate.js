@@ -1,15 +1,15 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
+import { Container, Row, Spinner } from "react-bootstrap";
 
 function LoadingTemplate() {
     return(
-        <Container maxWidth="xs">
-            <div className="paper">
-                <Typography component="h1" variant="h5">
-                    Loading♥
-                </Typography>
-            </div>
+        <Container>
+            <Row className="justify-content-lg-center">
+                <h1>Loading</h1>
+            </Row>
+            <Row className="justify-content-lg-center">
+                <Spinner animation="grow" variant="primary" />
+            </Row>
         </Container>
     );
 }

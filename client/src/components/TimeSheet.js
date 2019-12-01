@@ -1,13 +1,29 @@
 import React from "react";
 import {getCurrentMonthDays} from "../utils/Days";
+import DaysTable from "./DaysTable";
+import { Container, Row, Col } from "react-bootstrap";
+import { connect } from "react-redux";
+import { setDays } from "../actions/actions";
 
-function TimeSheet() {
-    let days = getCurrentMonthDays();
-    for(let i = 0; i < days.length; i++){
-        console.log(days[i]);
-    }
+function TimeSheet({ days, setDays }) {
+    days = getCurrentMonthDays();
+    setDays(days);
 
-    return <h1>Timesheet</h1>
+    return (
+        <Container>
+            <Row>
+                <Col lg="12">
+                    <DaysTable />
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
-export default TimeSheet;
+const mapDispatchToProps = dispatch => ({
+    setDays: days => {
+        dispatch(setDays(days));
+    }
+});
+
+export default connect(null, mapDispatchToProps)(TimeSheet);

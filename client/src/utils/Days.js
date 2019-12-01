@@ -1,11 +1,13 @@
+import Day from "../models/Day";
+
 const DAYS = [
-    "Lunedi",
-    "Martedi",
-    "Mercoledi",
-    "Giovedi",
-    "Venerdi",
-    "Sabato",
-    "Domenica"
+    { name: "Lunedi", working: true },
+    { name: "Martedi", working: true },
+    { name: "Mercoledi", working: true },
+    { name: "Giovedi", working: true },
+    { name: "Venerdi", working: true },
+    { name: "Sabato", working: false },
+    { name: "Domenica", working: false }
 ];
 
 function toDay(day) {
@@ -29,12 +31,15 @@ export function getDays(month, year) {
     for(let d = 1; d <= days; d++){
         let date = new Date(year, month, d);
         let day = toDay(date.getDay());
-        ret.push({
+        let appDay = DAYS[day-1];
+
+        ret.push(new Day({
             inMonth: d,
             inWeek: day,
-            name: DAYS[day-1],
+            name: appDay.name,
+            working: appDay.working,
             date: date
-        });
+        }));
     }
 
     return ret;

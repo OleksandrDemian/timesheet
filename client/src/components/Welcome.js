@@ -1,23 +1,22 @@
 import React from "react";
 import {connect} from "react-redux";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+
+import { Container, Row, Button } from "react-bootstrap";
 
 function Welcome({user}) {
     return (
-        <Container maxWidth="xs">
-            <div className="paper">
-                <Typography component="h1" variant="h5">
-                    Welcome {user.mail}
-                </Typography>
+        <Container>
+            <Row className="justify-content-lg-center">
+                Welcome {user.mail}
+            </Row>
+            <Row className="justify-content-lg-center">
                 <Link to="/timesheet">
                     <Button>
                         Go to timesheet
                     </Button>
                 </Link>
-            </div>
+            </Row>
         </Container>
     );
 }

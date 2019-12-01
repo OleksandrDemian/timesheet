@@ -1,7 +1,7 @@
 import React from "react";
-import LoginContainer from "../containers/LoginContainer";
 import {Route, BrowserRouter, Switch} from "react-router-dom";
 import Home from "./Home";
+import LoginContainer from "../containers/LoginContainer";
 import TimeSheet from "./TimeSheet";
 
 function App() {
