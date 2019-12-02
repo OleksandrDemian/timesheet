@@ -1,14 +1,12 @@
-import { SET_DAYS, UPDATE_CHECKED_DAYS } from "../actions/actions";
+import { SET_DAYS, UPDATE_CHECKED_DAYS, CHECK_DAY } from "../actions/actions";
 
-const defaultDaysStateRepo = {
-    days: null
-};
+const DEFAULT_DAYS_STATE_REPO = [];
 
 const DEFAULT_COMESSA = {
     oraInizio: "",
     oraFine: "",
     oreLavorate: "",
-    checked: true
+    checked: false
 }
 /*
 let day = {
@@ -28,26 +26,36 @@ let comessa = {
     checked
 }
 */
-function daysRepoReducer (state = defaultDaysStateRepo, action) {
+function daysRepoReducer (state = DEFAULT_DAYS_STATE_REPO, action) {
     let days = null;
     switch (action.type) {
         case SET_DAYS:
             days = action.payload;
 
-            days.map(day => {
-                day.comessa = DEFAULT_COMESSA;
+            return days.map(day => {
+                day.comessa = Object.assign({}, DEFAULT_COMESSA);
+                return day;
             });
-
-            return Object.assign({}, state, { days });
         case UPDATE_CHECKED_DAYS:
-            let { prop, value } = action.payload;
-            days = state.days;
+            let { prop, value, inMonth } = action.payload;
 
-            for(let i = 0; i < days.length; i++){
-                days[i].comessa[prop] = value;
-            }
-
-            return Object.assign({}, state, { days });
+            return state.map(day => {
+                if(day.comessa.checked || day.inMonth === inMonth){
+                    day.comessa[prop] = value;
+                }
+                
+                return day;
+            });
+        case CHECK_DAY:
+            let payload = action.payload;
+            return state.map(day => {
+                if(day.inMonth === payload.inMonth){
+                    day.comessa.checked = payload.action;
+                    return day;
+                } else {
+                    return day;
+                }
+            });
         default:
             return state;
     }

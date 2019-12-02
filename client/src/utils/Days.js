@@ -20,7 +20,7 @@ const DAYS = [
 function parseSunSatToMonSunWeekNumbering(day) {
     if(day === 0){
         day = 7;
-    } else if(day > 6){
+    } else if(day > 6 && day < 0){
         throw new Error("Invalid day");
     }
 

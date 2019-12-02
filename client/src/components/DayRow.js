@@ -1,18 +1,19 @@
 import React from "react";
 
-function DayRow ({ day, onUpdate }) {
+function DayRow ({ day, onUpdate, checkDay }) {
     const comessa = day.comessa;
 
     const onChange = e => {
         const target = e.target;
         const prop = target.name;
         const value = target.value;
+        const inMonth = day.inMonth;
 
-        onUpdate({ prop, value });
+        onUpdate({ prop, value, inMonth });
     };
 
     const onCheckChange = e => {
-        comessa.checked = e.target.checked;
+        checkDay(day.inMonth, e.target.checked);
     }
 
     return (
@@ -24,13 +25,13 @@ function DayRow ({ day, onUpdate }) {
                 {day.name}, {day.inMonth}
             </td>
             <td>
-                <input type="text" className="form-control" onChange={onChange} name="oraInizio" value={comessa.oraInizio} />
+                <input type="time" className="form-control" onChange={onChange} name="oraInizio" value={comessa.oraInizio} />
             </td>
             <td>
-                <input type="text" className="form-control" onChange={onChange} name="oraFine" value={comessa.oraFine} />
+                <input type="time" className="form-control" onChange={onChange} name="oraFine" value={comessa.oraFine} />
             </td>
             <td>
-                <input type="text" className="form-control" onChange={onChange} name="oreLavorate" value={comessa.oreLavorate} />
+                <input type="time" className="form-control" onChange={onChange} name="oreLavorate" value={comessa.oreLavorate} />
             </td>
         </tr>
     );

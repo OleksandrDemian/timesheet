@@ -2,9 +2,9 @@ import React from "react";
 import DayRow from "./DayRow";
 import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
-import { updateCheckedDays } from "../actions/actions";
+import { updateCheckedDays, checkDay } from "../actions/actions";
 
-function DaysTable({ days, updateCheckedDays }){
+function DaysTable({ days, updateCheckedDays, checkDay }){
 
     return (
         <Table>
@@ -19,7 +19,7 @@ function DaysTable({ days, updateCheckedDays }){
             </thead>
             <tbody>
                 { days.map(day => {
-                    return <DayRow key={day.inMonth} day={day} onUpdate={updateCheckedDays} /> }
+                    return <DayRow key={day.inMonth} day={day} onUpdate={updateCheckedDays} checkDay={checkDay} /> }
                 )}
             </tbody>
         </Table>
@@ -28,13 +28,16 @@ function DaysTable({ days, updateCheckedDays }){
 
 const mapStateToProps = state => {
     return {
-        days: state.daysRepo.days
+        days: state.daysRepo
     }
 };
 
 const mapDispatchToProps = dispatch => ({
     updateCheckedDays: value => {
         dispatch(updateCheckedDays(value));
+    },
+    checkDay: (inMonth, action) => {
+        dispatch(checkDay(inMonth, action));
     }
 });
 
