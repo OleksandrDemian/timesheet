@@ -10,6 +10,12 @@ const DAYS = [
     { name: "Domenica", working: false }
 ];
 
+/**
+ * I have no idea what this method does
+ * @param {number} day
+ * @returns 7 if day is 0, day otherwise
+ * @throws Error if day > 6
+ */
 function toDay(day) {
     if(day === 0){
         day = 7;
@@ -20,6 +26,11 @@ function toDay(day) {
     return day;
 }
 
+/**
+ * What the fuck does this method do? Souldn't it return 1 all the time?
+ * @param {number} month 
+ * @param {number} year 
+ */
 export function getDaysCount(month, year) {
     return new Date(year, month+1, 0).getDate();
 }
