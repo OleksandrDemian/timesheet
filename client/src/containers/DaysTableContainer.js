@@ -1,6 +1,6 @@
 import DaysTable from "../components/DaysTable";
 import { connect } from "react-redux";
-import { updateCheckedDays, checkDay } from "../actions/actions";
+import { updateCheckedDays, checkDay, checkAll } from "../actions/actions";
 
 const mapStateToProps = state => {
     return {
@@ -14,6 +14,9 @@ const mapDispatchToProps = dispatch => ({
     },
     checkDay: (inMonth, action) => {
         dispatch(checkDay(inMonth, action));
+    },
+    checkAll: action => {
+        dispatch(checkAll(action));
     }
 });
 

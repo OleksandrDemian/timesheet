@@ -16,12 +16,17 @@ function DayRow ({ day, onUpdate, checkDay }) {
         checkDay(day.inMonth, e.target.checked);
     }
 
+    const dayProps = {};
+    if(!day.working){
+        dayProps.className = "text-danger";
+    }
+
     return (
         <tr>
             <td>
                 <input type="checkbox" onChange={onCheckChange} checked={comessa.checked} />
             </td>
-            <td>
+            <td {...dayProps}>
                 {day.name}, {day.inMonth}
             </td>
             <td>
@@ -32,6 +37,9 @@ function DayRow ({ day, onUpdate, checkDay }) {
             </td>
             <td>
                 <input type="time" className="form-control" onChange={onChange} name="oreLavorate" value={comessa.oreLavorate} />
+            </td>
+            <td>
+                <input type="time" className="form-control" onChange={onChange} name="oreStraordinarie" value={comessa.oreStraordinarie} />
             </td>
         </tr>
     );

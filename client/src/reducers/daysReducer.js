@@ -1,4 +1,4 @@
-import { SET_DAYS, UPDATE_CHECKED_DAYS, CHECK_DAY } from "../actions/actions";
+import { SET_DAYS, UPDATE_CHECKED_DAYS, CHECK_DAY, CHECK_WORKING_DAYS } from "../actions/actions";
 
 const DEFAULT_DAYS_STATE_REPO = [];
 
@@ -23,6 +23,7 @@ let comessa = {
     oraInizio,
     oraFine,
     oreLavorate,
+    oreStraordinarie,
     checked
 }
 */
@@ -56,6 +57,14 @@ function daysRepoReducer (state = DEFAULT_DAYS_STATE_REPO, action) {
                     return day;
                 }
             });
+            case CHECK_WORKING_DAYS:
+                return state.map(day => {
+                    if(day.working){
+                        day.comessa.checked = action.payload;
+                    }
+
+                    return day;
+                });
         default:
             return state;
     }
