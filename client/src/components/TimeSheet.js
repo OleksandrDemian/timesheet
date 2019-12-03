@@ -1,6 +1,6 @@
 import React from "react";
 import {getCurrentMonthDays} from "../utils/Days";
-import DaysTable from "./DaysTable";
+import DaysTableContainer from "../containers/DaysTableContainer";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { setDays } from "../actions/actions";
@@ -13,7 +13,7 @@ function TimeSheet({ days, setDays }) {
         <Container>
             <Row>
                 <Col lg="12">
-                    <DaysTable />
+                    <DaysTableContainer />
                 </Col>
             </Row>
         </Container>

@@ -1,8 +1,6 @@
 import React from "react";
 import DayRow from "./DayRow";
 import { Table } from "react-bootstrap";
-import { connect } from "react-redux";
-import { updateCheckedDays, checkDay } from "../actions/actions";
 
 function DaysTable({ days, updateCheckedDays, checkDay }){
 
@@ -26,19 +24,4 @@ function DaysTable({ days, updateCheckedDays, checkDay }){
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        days: state.daysRepo
-    }
-};
-
-const mapDispatchToProps = dispatch => ({
-    updateCheckedDays: value => {
-        dispatch(updateCheckedDays(value));
-    },
-    checkDay: (inMonth, action) => {
-        dispatch(checkDay(inMonth, action));
-    }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(DaysTable);
+export default DaysTable;
