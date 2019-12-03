@@ -1,31 +1,14 @@
 import Day from "../models/Day";
 
 const DAYS = [
+    { name: "Domenica", working: false },
     { name: "Lunedi", working: true },
     { name: "Martedi", working: true },
     { name: "Mercoledi", working: true },
     { name: "Giovedi", working: true },
     { name: "Venerdi", working: true },
-    { name: "Sabato", working: false },
-    { name: "Domenica", working: false }
+    { name: "Sabato", working: false }
 ];
-
-/**
- * Parses days on week numbering from (sun-sat / 0 - 6) to (mon - sun / 1 - 7)
- * 
- * @param {number} day
- * @returns the number of the day in the week (1 to 7)
- * @throws Error if day > 6
- */
-function parseSunSatToMonSunWeekNumbering(day) {
-    if(day === 0){
-        day = 7;
-    } else if(day > 6 && day < 0){
-        throw new Error("Invalid day");
-    }
-
-    return day;
-}
 
 /**
  * @param {number} month number (1 to 12) of the month
@@ -49,8 +32,8 @@ export function getDays(month, year) {
 
     for(let d = 1; d <= days; d++){
         let date = new Date(year, month, d);
-        let day = parseSunSatToMonSunWeekNumbering(date.getDay());
-        let appDay = DAYS[day-1];
+        let day = date.getDay();
+        let appDay = DAYS[day];
 
         ret.push(new Day({
             inMonth: d,
