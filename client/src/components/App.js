@@ -3,6 +3,7 @@ import {Route, BrowserRouter, Switch} from "react-router-dom";
 import Home from "./Home";
 import LoginContainer from "../containers/LoginContainer";
 import TimeSheet from "./TimeSheet";
+import MonthChooserContainer from "../containers/MonthChooserContainer";
 
 function App() {
     return (
@@ -16,6 +17,9 @@ function App() {
                 </Route>
                 <Route path="/timesheet">
                     <TimeSheet />
+                </Route>
+                <Route path="/month">
+                    <MonthChooserContainer />
                 </Route>
             </Switch>
         </BrowserRouter>
