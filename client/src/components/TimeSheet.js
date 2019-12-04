@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { setDays } from "../actions/actions";
 import TimeSheetHeader from "./TimeSheetHeader";
+import MonthChooserContainer from "../containers/MonthChooserContainer";
 
 export const TIME_SHEET_MODE = "TIME_SHEET_MODE";
 export const CONFIRM_SHEET_MODE = "CONFIRM_SHEET_MODE";
@@ -50,6 +51,7 @@ function TimeSheet({ month, year, setDays }) {
             <Row>
                 <Col lg="12">
                     { mode === TIME_SHEET_MODE && <DaysTableContainer /> }
+                    { mode === CAHNGE_MONTH_MODE && <MonthChooserContainer /> }
                 </Col>
             </Row>
         </Container>
