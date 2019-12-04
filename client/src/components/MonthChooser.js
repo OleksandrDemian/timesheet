@@ -22,18 +22,18 @@ function MonthChooser({ confirmDate, _month, _year }){
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label>Mese</Form.Label>
                         <Form.Control as="select" value={month} onChange={handleFormInput(setMonth)}>
-                            <option value="0">1</option>
-                            <option value="1">2</option>
-                            <option value="2">3</option>
-                            <option value="3">4</option>
-                            <option value="4">5</option>
-                            <option value="5">6</option>
-                            <option value="6">7</option>
-                            <option value="7">8</option>
-                            <option value="8">9</option>
-                            <option value="9">10</option>
-                            <option value="10">11</option>
-                            <option value="11">12</option>
+                            <option value="0">Gennaio</option>
+                            <option value="1">Febbraio</option>
+                            <option value="2">Marzo</option>
+                            <option value="3">Aprile</option>
+                            <option value="4">Maggio</option>
+                            <option value="5">Giugno</option>
+                            <option value="6">Luglio</option>
+                            <option value="7">Agosto</option>
+                            <option value="8">Settembre</option>
+                            <option value="9">Ottobre</option>
+                            <option value="10">Novembre</option>
+                            <option value="11">Dicembre</option>
                         </Form.Control>
                     </Form.Group>
                     <Button type="submit" variant="primary">
