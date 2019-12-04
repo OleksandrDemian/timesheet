@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import Login from "../components/Login";
 import { connect } from "react-redux";
 import {loginDone} from "../actions/actions";
 import LoadingTemplate from "../components/LoadingTemplate";
-import Welcome from "../components/Welcome";
 
 function LoginContainer({ logIn, user }) {
     const [ loading, setLoading ] = useState(false);
@@ -23,7 +23,7 @@ function LoginContainer({ logIn, user }) {
     };
     
     if(loading) return <LoadingTemplate />;
-    if(user !== null) return <Welcome/>;
+    if(user !== null) return <Redirect to="/timesheet"/>;
 
     return <Login onSubmit={fetchUser} failed={failed} />;
 }
